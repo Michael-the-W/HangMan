@@ -1,0 +1,46 @@
+﻿<Window x:Class="HangMan.WelcomeScreen"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HangMan"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="WelcomeScreen" Height="450" Width="800">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush Opacity="0.85">
+                <ImageBrush.ImageSource>
+                    <BitmapImage UriSource="/Images/noose3.png"/>
+                </ImageBrush.ImageSource>
+            </ImageBrush>
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition MaxHeight="250" MinHeight="150"/>
+            <RowDefinition Height="125"/>
+            <RowDefinition Height="75"/>
+        </Grid.RowDefinitions>
+        <Label Content="Hang Man" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="382" FontSize="72" Foreground="#FFB80100" FontFamily="Stencil" Margin="207,58,203,58" FontWeight="Bold">
+            <Label.Effect>
+                <DropShadowEffect/>
+            </Label.Effect>
+        </Label>
+        <Button Content="Introvert" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" Width="232" Height="102" Click="SinglePlayer_ButtonClick" Background="{x:Null}" FontFamily="Copperplate Gothic Bold" FontWeight="Bold" FontSize="36" Foreground="#FFB80100" BorderBrush="#FFB80100" BorderThickness="3" >
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+        </Button>
+        <Button Content="Extrovert" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" Width="232" Height="102" Click="MultiPlayer_ButtonClick" Background="{x:Null}" BorderBrush="#FFB80100" Foreground="#FFB80100" FontFamily="Copperplate Gothic Bold" FontSize="36" FontWeight="Bold" BorderThickness="3" Grid.Column="1">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+        </Button>
+        <TextBlock HorizontalAlignment="Center" Grid.Row="2" Grid.Column="0" TextWrapping="Wrap" Text="(Single Player)" VerticalAlignment="Top" FontFamily="Copperplate Gothic Bold" FontSize="20" FontWeight="Bold" Foreground="#FFB80100"/>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Center" Grid.Row="2"  TextWrapping="Wrap" Text="(Multiplayer)" VerticalAlignment="Top" Foreground="#FFB80100" FontFamily="Copperplate Gothic Bold" FontSize="20" FontWeight="Bold"/>
+
+    </Grid>
+</Window>
