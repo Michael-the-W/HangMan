@@ -15,7 +15,7 @@
                 </ImageBrush.ImageSource>
             </ImageBrush>
         </Grid.Background>
-
+        
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
             <ColumnDefinition />
@@ -26,9 +26,7 @@
             <RowDefinition />
         </Grid.RowDefinitions>
 
-
-
-        <Button Content="Play Again?" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Background="{x:Null}" BorderBrush="#FFB80100" Foreground="#FFB80100" FontFamily="Copperplate Gothic Bold" FontSize="36" FontWeight="Bold" BorderThickness="3" Width="300" Height="100" Click="Button_Click">
+        <Button x:Name="PlayAgainBtn" Content="Play Again?" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Background="{x:Null}" BorderBrush="#FFB80100" Foreground="#FFB80100" FontFamily="Copperplate Gothic Bold" FontSize="36" FontWeight="Bold" BorderThickness="3" Width="300" Height="100" Click="Home_Button_Click">
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
@@ -39,7 +37,7 @@
                 <DropShadowEffect/>
             </TextBlock.Effect>
         </TextBlock>
-        <TextBlock x:Name="Answer" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Top" TextWrapping="Wrap" Text="" Foreground="Black" FontFamily="Copperplate Gothic Bold" FontWeight="Bold" FontSize="20"/>
 
+        <TextBlock x:Name="Answer" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Top" TextWrapping="Wrap" Text="" Foreground="Black" FontFamily="Copperplate Gothic Bold" FontWeight="Bold" FontSize="20"/>
     </Grid>
 </Window>

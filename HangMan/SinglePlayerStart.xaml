@@ -15,12 +15,14 @@
                 </ImageBrush.ImageSource>
             </ImageBrush>
         </Grid.Background>
+        
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
+        
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
@@ -28,22 +30,25 @@
             <RowDefinition  Height="30" MaxHeight="35" MinHeight="25"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
+        
         <TextBlock Name="Directions" Text="Choose Doom Level and Press Start" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="4" HorizontalAlignment="Stretch" TextWrapping="Wrap" VerticalAlignment="Top" Height="43" TextAlignment="Center" FontFamily="Stencil" FontWeight="Bold" FontSize="36" Foreground="#FFB80100">
             <TextBlock.Effect>
                 <DropShadowEffect/>
             </TextBlock.Effect>
         </TextBlock>
-        <Button Name="Start" Content="Start" Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Top" Width="200" Height="75" Click="Button_Click" Background="{x:Null}" BorderBrush="#FFB80100" Foreground="#FFB80100" FontFamily="Copperplate Gothic Bold" FontWeight="Bold" FontSize="36" BorderThickness="3">
+        
+        <Button x:Name="StartBtn" Content="Start" Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Top" Width="200" Height="75" Click="Button_Click" Background="{x:Null}" BorderBrush="#FFB80100" Foreground="#FFB80100" FontFamily="Copperplate Gothic Bold" FontWeight="Bold" FontSize="36" BorderThickness="3">
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
         </Button>
-        <Button Name="Random" Content="Random" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="149" Click="Random_Click" FontFamily="Copperplate Gothic Bold" Background="{x:Null}" BorderBrush="#FFB80100" Foreground="#FFB80100" FontWeight="Bold" Height="34" FontSize="20" BorderThickness="3"/>
-        <Button Name="Easy" Content="Easy" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="147" Click="Easy_Click" FontFamily="Copperplate Gothic Bold" FontWeight="Bold" Background="{x:Null}" Foreground="#FFB80100" BorderBrush="#FFB80100" Height="34" Grid.Column="1" FontSize="20" BorderThickness="3"/>
-        <Button Name="Medium"  Content="Medium" Grid.Column="2" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="147" Click="Medium_Click" BorderBrush="#FFB80100" Foreground="#FFB80100" Background="{x:Null}" FontFamily="Copperplate Gothic Bold" FontWeight="Bold" Height="34" FontSize="20" BorderThickness="3"/>
-        <Button Name="Hard" Content="Hard" Grid.Column="3" Grid.Row="2" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="147" Click="Hard_Click" Background="{x:Null}" BorderBrush="#FFB80100" Foreground="#FFB80100" FontFamily="Copperplate Gothic Bold" FontWeight="Bold" Height="34" FontSize="20" BorderThickness="3"/>
+        
+        <Button Name="RandomBtn" Content="Random" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="149" Click="Random_Click" FontFamily="Copperplate Gothic Bold" Background="{x:Null}" BorderBrush="#FFB80100" Foreground="#FFB80100" FontWeight="Bold" Height="34" FontSize="20" BorderThickness="3"/>
+        <Button Name="EasyBtn" Content="Easy" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="147" Click="Easy_Click" FontFamily="Copperplate Gothic Bold" FontWeight="Bold" Background="{x:Null}" Foreground="#FFB80100" BorderBrush="#FFB80100" Height="34" Grid.Column="1" FontSize="20" BorderThickness="3"/>
+        <Button Name="MediumBtn"  Content="Medium" Grid.Column="2" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="147" Click="Medium_Click" BorderBrush="#FFB80100" Foreground="#FFB80100" Background="{x:Null}" FontFamily="Copperplate Gothic Bold" FontWeight="Bold" Height="34" FontSize="20" BorderThickness="3"/>
+        <Button Name="HardBtn" Content="Hard" Grid.Column="3" Grid.Row="2" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="147" Click="Hard_Click" Background="{x:Null}" BorderBrush="#FFB80100" Foreground="#FFB80100" FontFamily="Copperplate Gothic Bold" FontWeight="Bold" Height="34" FontSize="20" BorderThickness="3"/>
         <TextBlock Name="difficultyText" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" HorizontalAlignment="Center"  TextWrapping="Wrap" VerticalAlignment="Center" TextAlignment="Center" FontSize="20" Foreground="#FFB80100" FontFamily="Copperplate Gothic Bold" FontWeight="Bold"/>
-        <Button Name="Egg" Grid.Column="3" Grid.Row="4" Width="15" Height="15" VerticalAlignment="Bottom" HorizontalAlignment="Right" Opacity="0" Click="Egg_Click" />
-        <Button Content="Home" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" Margin="24,36,24,27" VerticalAlignment="Center" Width="150" Height="34" Background="{x:Null}" FontFamily="Copperplate Gothic Bold" BorderBrush="#FFB80100" FontWeight="Bold" FontSize="20" BorderThickness="3" Foreground="#FFB80100" Click="Button_Click_1"/>
+        <Button Name="EggBtn" Grid.Column="3" Grid.Row="4" Width="15" Height="15" VerticalAlignment="Bottom" HorizontalAlignment="Right" Opacity="0" Click="Egg_Click" />
+        <Button x:Name="HomeBtn" Content="Home" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" Margin="24,36,24,27" VerticalAlignment="Center" Width="150" Height="34" Background="{x:Null}" FontFamily="Copperplate Gothic Bold" BorderBrush="#FFB80100" FontWeight="Bold" FontSize="20" BorderThickness="3" Foreground="#FFB80100" Click="Home_Button_Click"/>
     </Grid>
 </Window>

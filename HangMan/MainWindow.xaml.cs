@@ -1,4 +1,6 @@
-﻿using HangMan.Letters;
+﻿// Team Charlie: Gill, Wagner [Hangman] - 04/30/19 - MainWindow: Main game window where the keyboard and gallows are displayed and the player can guess the word.
+
+using HangMan.Letters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,9 +16,10 @@ namespace HangMan
       double height;
       string guessingWord;
       int wrongGuess = 0;
-      char[] charactersToHide = new char[] { ' ', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
+      char[] charactersToHide = new char[] {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
       List<SingleLetter> singleLetters = new List<SingleLetter>();
 
+      // MainWindow constructor that is given the difficulty level for Single Player and the Word to Guess is by default empty to indicate Single Player mode
       public MainWindow(int difficulty, string wordToGuess = "")
       {
          InitializeComponent();
@@ -25,40 +28,46 @@ namespace HangMan
 
          #region Gallows
          // Instantiate Gallows
+
+         /*  Hanging Line  */
          Line myLine1 = new Line();
          myLine1.Stroke = System.Windows.Media.Brushes.Black;
          myLine1.X1 = width - 100;
          myLine1.X2 = width - 100;
          myLine1.Y1 = height - 350;
          myLine1.Y2 = height - 300;
-         myLine1.StrokeThickness = 2;
+         myLine1.StrokeThickness = 4;
          HangMan.Children.Add(myLine1);
 
+         /*  Top Horizontal Line  */
          Line myLine2 = new Line();
          myLine2.Stroke = System.Windows.Media.Brushes.Black;
          myLine2.X1 = width - 200;
          myLine2.X2 = width - 100;
          myLine2.Y1 = height - 350;
          myLine2.Y2 = height - 350;
-         myLine2.StrokeThickness = 2;
+         myLine2.StrokeThickness = 4;
          HangMan.Children.Add(myLine2);
 
+         /*  Long Vertical Line  */
          Line myLine3 = new Line();
          myLine3.Stroke = System.Windows.Media.Brushes.Black;
          myLine3.X1 = width - 200;
          myLine3.X2 = width - 200;
          myLine3.Y1 = height - 350;
          myLine3.Y2 = height - 100;
-         myLine3.StrokeThickness = 2;
+         myLine3.StrokeThickness = 4;
          HangMan.Children.Add(myLine3);
 
+
+         /*  Bottom Horizontal Line  */
          Line myLine = new Line();
          myLine.Stroke = System.Windows.Media.Brushes.Black;
          myLine.X1 = width - 225;
          myLine.X2 = width - 50;
          myLine.Y1 = height - 100;
          myLine.Y2 = height - 100;
-         myLine.StrokeThickness = 2;
+         myLine.StrokeThickness = 4;
          HangMan.Children.Add(myLine);
          #endregion
 
@@ -109,11 +118,14 @@ namespace HangMan
             guessingWord = wordToGuess;
          }
 
+         // Convert the word to guess to ALL CAPS and convert and assign it to a character array
          guessingWord = guessingWord.ToUpper();
          char[] guessWordArray = guessingWord.ToCharArray();
 
-         Label tempLabel = new Label();
-         tempLabel.Content = "a";
+         Label tempLabel = new Label(); // Temporary label assigned to the SingleLetter's label
+         tempLabel.Content = "a";       // Initialize the Content property of the temporary label (This value will be changed later, so the value doesn't matter)
+
+         // Assign the word to guess into the Letter character for each SingleLetter
          foreach (char x in guessWordArray)
          {
             SingleLetter letter = new SingleLetter();
@@ -131,6 +143,8 @@ namespace HangMan
 
          }
          int labelCount = 0;
+
+         // Display all the labels on the game interface
          foreach (SingleLetter x in singleLetters)
          {
             ++labelCount;
@@ -147,7 +161,8 @@ namespace HangMan
          }
       }
 
-      private void Button_Click(object sender, RoutedEventArgs e)
+      // Even that fires when a letter of the alphabet keyboard is clicked on the game interface
+      private void Letter_Click(object sender, RoutedEventArgs e)
       {
          Button btn = sender as Button;
          string s = btn.Content.ToString();
@@ -157,17 +172,21 @@ namespace HangMan
          btn.Visibility = Visibility.Collapsed;
          MainGrid.UpdateLayout();
 
+         // Run code inside if the user has fewer than 6 wrong guesses
          if (wrongGuess < 6)
          {
+            // Add the letter to the game interface if the letter is in the word to guess
             if (guessingWord.ToUpper().Contains(c))
             {
                foreach (SingleLetter x in singleLetters)
                {
-                  // If the letter pressed is in one of the letters, assign the letter to the label
+                  // If the letter clicked is in one of the letters, assign the letter stored in the SingleLetter to the label
                   if (x.Letter == c)
                      x.assignLabel();
                }
-               printLabels(); // Method to print labels
+               printLabels(); // Run the method to print labels
+
+               // Open the Result Screen if the word is guessed correctly
                if (guessingWord == onScreenListReturn())
                {
                   ResultScreen resultScreen = new ResultScreen(true, guessingWord);
@@ -176,6 +195,8 @@ namespace HangMan
                   this.Close();
                }
             }
+
+            // Add a part to the Hang Man (Steve) if the player guesses a letter wrong
             else
             {
                #region Draw Steve
@@ -189,7 +210,7 @@ namespace HangMan
 
                      Ellipse myEllipse = new Ellipse();
                      myEllipse.Stroke = System.Windows.Media.Brushes.Black;
-                     myEllipse.StrokeThickness = 2;
+                     myEllipse.StrokeThickness = 4;
                      myEllipse.Width = 50;
                      myEllipse.Height = 50;
 
@@ -204,7 +225,7 @@ namespace HangMan
                      myLine4.X2 = width - 100;
                      myLine4.Y1 = height - 250;
                      myLine4.Y2 = height - 200;
-                     myLine4.StrokeThickness = 2;
+                     myLine4.StrokeThickness = 4;
                      HangMan.Children.Add(myLine4);
                      break;
                   case 2:
@@ -214,7 +235,7 @@ namespace HangMan
                      myLine5.X2 = width - 135;
                      myLine5.Y1 = height - 230;
                      myLine5.Y2 = height - 255;
-                     myLine5.StrokeThickness = 2;
+                     myLine5.StrokeThickness = 4;
                      HangMan.Children.Add(myLine5);
                      break;
                   case 3:
@@ -224,7 +245,7 @@ namespace HangMan
                      myLine6.X2 = width - 65;
                      myLine6.Y1 = height - 230;
                      myLine6.Y2 = height - 255;
-                     myLine6.StrokeThickness = 2;
+                     myLine6.StrokeThickness = 4;
                      HangMan.Children.Add(myLine6);
                      break;
                   case 4:
@@ -234,7 +255,7 @@ namespace HangMan
                      myLine7.X2 = width - 100;
                      myLine7.Y1 = height - 175;
                      myLine7.Y2 = height - 200;
-                     myLine7.StrokeThickness = 2;
+                     myLine7.StrokeThickness = 4;
                      HangMan.Children.Add(myLine7);
                      break;
                   case 5:
@@ -244,7 +265,7 @@ namespace HangMan
                      myLine.X2 = width - 135;
                      myLine.Y1 = height - 200;
                      myLine.Y2 = height - 175;
-                     myLine.StrokeThickness = 2;
+                     myLine.StrokeThickness = 4;
                      HangMan.Children.Add(myLine);
                      break;
                   default:
@@ -257,6 +278,7 @@ namespace HangMan
             }
          }
 
+         // If the player has guessed wrong 6 times, show the Result Screen showing the player they lost with the word they were supposed to guess
          if (wrongGuess == 6)
          {
             foreach (SingleLetter x in singleLetters)
@@ -272,6 +294,7 @@ namespace HangMan
          }
       }
 
+      // Clear the current word/phrase printing on the screen and print out all the labels and their pre-assigned content
       private void printLabels()
       {
          labelList.Items.Clear();
@@ -295,16 +318,18 @@ namespace HangMan
          }
       }
 
-      private void Button_Click_1(object sender, RoutedEventArgs e)
+      // Button to go to the Welcome Screen
+      private void Home_Button_Click(object sender, RoutedEventArgs e)
       {
          WelcomeScreen welcomeScreen = new WelcomeScreen();
          welcomeScreen.Show();
          this.Close();
       }
 
+      // Returns all the characters on the screen as a string
       private string onScreenListReturn()
       {
-         string tempString = String.Empty;
+         string tempString = string.Empty;
          foreach (Label x in labelList.Items)
          {
             tempString += x.Content;

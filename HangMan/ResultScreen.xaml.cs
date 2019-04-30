@@ -1,24 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// Team Charlie: Gill, Wagner [Hangman] - 04/30/19 - ResultScreen: Displays the result of the game and the word being guessed, with a play again option
+
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace HangMan
 {
+    // Displays the result of the game and the word being guessed
     public partial class ResultScreen : Window
     {
         public ResultScreen(bool result, string correctWord)
         {
-            InitializeComponent();
+           InitializeComponent();
 
            if (result)
            {
@@ -30,10 +21,10 @@ namespace HangMan
                Result.Text = "You're dead.";
                Answer.Text = ($"The word was {correctWord}");
            }
-
         }
 
-      private void Button_Click(object sender, RoutedEventArgs e)
+      // Sends player back to the Home Welcome Screen
+      private void Home_Button_Click(object sender, RoutedEventArgs e)
       {
          WelcomeScreen welcomeScreen = new WelcomeScreen();
          welcomeScreen.Show();

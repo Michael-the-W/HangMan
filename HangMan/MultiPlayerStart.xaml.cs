@@ -1,31 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿// Team Charlie: Gill, Wagner [Hangman] - 04/30/19 - MultiPlayerStart: Provides a blank for one player to enter a word for the second player
+
+using System;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace HangMan
 {
-   /// <summary>
-   /// Interaction logic for StartPage.xaml
-   /// </summary>
    public partial class MultiPlayerStart : Window
    {
       public MultiPlayerStart()
       {
          InitializeComponent();
-         //Directions.Text = "";
       }
 
+      // Starts the game requiring at least one letter to be entered
       private void Button_Click(object sender, RoutedEventArgs e)
       {
          string guessWord = Word.Text;
@@ -38,11 +27,12 @@ namespace HangMan
          }
          else
          {
-            Message.Text= "You can't escape!\nThe word must contain at least one letter";
-            Word.Text = String.Empty;
+            ErrorMsg.Text= "You can't escape!\nThe word must contain at least one letter";
+            Word.Text = string.Empty;
          }
       }
 
+      // Allows player to press enter on the keyboard to start the game
       private void Word_PreviewKeyDown(object sender, KeyEventArgs e)
       {
          if (e.Key == Key.Return)
@@ -57,13 +47,14 @@ namespace HangMan
             }
             else
             {
-               Message.Text = "You can't escape!\nThe word must contain at least one letter";
-               Word.Text = String.Empty;
+               ErrorMsg.Text = "You can't escape!\nThe word must contain at least one letter";
+               Word.Text = string.Empty;
             }
          }
       }
 
-      private void Button_Click_1(object sender, RoutedEventArgs e)
+      // Sends player back to the Home Welcome Screen
+      private void Home_Button_Click(object sender, RoutedEventArgs e)
       {
          WelcomeScreen welcomeScreen = new WelcomeScreen();
          welcomeScreen.Show();

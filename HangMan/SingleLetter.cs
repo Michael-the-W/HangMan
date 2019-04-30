@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// Team Charlie: Gill, Wagner [Hangman] - 04/30/19 - SingleLetter: Provides a label with a single letter to the game interface and stores the letter until it needs to be displayed
+
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -16,12 +13,14 @@ namespace HangMan.Letters
       private char _letter;
       const int BORDER_WIDTH = 2;
 
+      // The character that stores the letter or character to be assigned to the label
       public char Letter
       {
          get => _letter;
          set => _letter = value;
       }
 
+      // The label to be displayed on the game interface
       public Label LocalLabel
       {
          get { return localLabel; }
@@ -37,11 +36,10 @@ namespace HangMan.Letters
             localLabel.FontSize = 20;
             localLabel.Width = 30;
             localLabel.Height = 40;
-            
-            //localLabel.Content = value.ToString();
          }
       }
 
+      // Assign the letter to the label so the letter can be displayed on the game interface
       public void assignLabel()
       {
          LocalLabel.Content = Letter;
